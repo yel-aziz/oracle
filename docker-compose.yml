@@ -1,0 +1,25 @@
+version: '3.6'
+
+services:
+  
+  postgress:
+    build: ./containers/postgresql
+    image: postgresql
+    container_name: postgresql
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+    networks:
+      - transcendence
+ 
+
+volumes:
+  postgresql:
+
+networks:
+  transcendence:
+    name: transcendence
